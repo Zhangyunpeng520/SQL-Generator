@@ -1,1 +1,4 @@
-PHP class to create sql queries using a jQuery way e.x. $sql->select('field', 'fiel2')->from('table');
+PHP class to create SQL queries using a jQuery way 
+e.x. $sql->select('field', 'fiel2')->from('table');
+
+------------------------------------------------------
