@@ -10,7 +10,6 @@
 
 	/**
 	 * Class generating SQL queries using methods invoking like $obj->select().
-	 * 
 	 */
 	class SqlGenerator {
 		
