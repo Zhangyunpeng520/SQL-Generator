@@ -11,7 +11,6 @@
 	/**
 	 * Class generating SQL queries using methods invoking like $obj->select().
 	 * 
-	 * @author gcdreak
 	 */
 	class SqlGenerator {
 		
