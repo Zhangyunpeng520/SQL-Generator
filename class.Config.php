@@ -1,7 +1,9 @@
-<?php 
+<?php
 
-	class Config {
-		public static $dbUser = 'daniel';
-		public static $dbPassword = '';
-		public static $dbDNS = 'mysql:dbname=testbaza;host=localhost';
-	}
+class Config {
+
+    public static $dbUser = 'daniel';
+    public static $dbPassword = 'drealine';
+    public static $dbDNS = 'mysql:dbname=testbaza;host=localhost';
+
+}
