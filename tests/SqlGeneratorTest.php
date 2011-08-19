@@ -64,58 +64,57 @@ class SqlGeneratorTest extends PHPUnit_Framework_TestCase {
     }
 
 
-    /**
-     * @todo Implement testInto().
-     */
     public function testInto() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
+        $values = array(
+            array('name' => 'Marcin'),
+            array('name' => 'Rafał'),
+            array('name' => 'Stanisław')
         );
+        
+        $exp = 'INSERT INTO users (name) VALUES ("Marcin"), ("Rafał"), ("Stanisław")';
+        $act = $this->object->insert($values)->into('users')->getSql();
+
+        $this->assertEquals($exp, $act);
     }
 
 
-    /**
-     * @todo Implement testUpdate().
-     */
     public function testUpdate() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $exp = 'UPDATE users SET name = "Agnes", age = 17;';
+        $act = $this->object->update('users')->set('name', 'Agnes')->set('age', 17)->getSql(true);
+
+        $this->assertEquals($exp, $act);
     }
 
 
-    /**
-     * @todo Implement testSet().
-     */
     public function testSet() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $exp = 'UPDATE users SET name = "Agnes";';
+        $act = $this->object->update('users')->set('name', 'Agnes')->getSql(true);
+
+        $this->assertEquals($exp, $act);
     }
 
 
-    /**
-     * @todo Implement testDelete().
-     */
+    public function testSetMultiple() {
+        $exp = 'UPDATE users SET name = "Agnes", age = 17;';
+        $act = $this->object->update('users')->set('name', 'Agnes')->set('age', 17)->getSql(true);
+
+        $this->assertEquals($exp, $act);
+    }
+
+
     public function testDelete() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $exp = 'DELETE FROM users';
+        $act = $this->object->delete('users')->getSql();
+        
+        $this->assertEquals($exp, $act);
     }
 
 
-    /**
-     * @todo Implement testLimit().
-     */
     public function testLimit() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $exp = 'SELECT * FROM users LIMIT 3';
+        $act = $this->object->select('*')->from('users')->limit(3)->getSql();
+        
+        $this->assertEquals($exp, $act);
     }
 
 
@@ -130,69 +129,81 @@ class SqlGeneratorTest extends PHPUnit_Framework_TestCase {
     }
 
 
-    /**
-     * @todo Implement testTable().
-     */
     public function testTable() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $exp = 'SELECT * FROM users';
+        $act = $this->object->select('*')->table('users')->getSql();
+        
+        $this->assertEquals($exp, $act);
     }
 
 
-    /**
-     * @todo Implement testTables().
-     */
     public function testTables() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $exp = 'SELECT * FROM users, profiles, tokens';
+        $act = $this->object->select('*')->tables(array('users', 'profiles', 'tokens'))->getSql();
+        
+        $this->assertEquals($exp, $act);
     }
 
 
-    /**
-     * @todo Implement testWhere().
-     */
     public function testWhere() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $exp = 'SELECT * FROM users WHERE id = 10';
+        $act = $this->object->select('*')->from('users')->where('id =', 10)->getSql();
+        
+        $this->assertEquals($exp, $act);
     }
 
 
-    /**
-     * @todo Implement testAndSql().
-     */
+    public function testWhereOr() {
+        $exp = 'SELECT * FROM users WHERE age = 10 OR name = "Dan"';
+        $act = $this->object->select('*')->from('users')->where('age =', 10)->where('name =', 'Dan', 'OR')->getSql();
+        
+        $this->assertEquals($exp, $act);
+    }
+
+
+    public function testWhereMultiple() {
+        $exp = 'SELECT * FROM users WHERE age = 10 AND name = "Dan"';
+        $act = $this->object->select('*')->from('users')->where('age =', 10)->where('name =', 'Dan', 'AND')->getSql();
+        
+        $this->assertEquals($exp, $act);
+    }
+
+
+    public function testWhereWithoutCondition() {
+        $exp = 'SELECT * FROM users WHERE id IN (1, 3, 4)';
+        $act = $this->object->select('*')->from('users')->where('id')->in(array(1,3,4))->getSql();
+        
+        $this->assertEquals($exp, $act);
+    }
+    
     public function testAndSql() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $exp = 'SELECT * FROM users WHERE age = 4 AND city = "New York"';
+        $act = $this->object->select('*')->from('users')->where('age =', 4)->andSql('city =', 'New York')->getSql();
+        
+        $this->assertEquals($exp, $act);
     }
 
 
-    /**
-     * @todo Implement testOrSql().
-     */
     public function testOrSql() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $exp = 'SELECT * FROM users WHERE age = 4 OR city = "New York"';
+        $act = $this->object->select('*')->from('users')->where('age =', 4)->orSql('city =', 'New York')->getSql();
+        
+        $this->assertEquals($exp, $act);
     }
 
 
-    /**
-     * @todo Implement testLike().
-     */
     public function testLike() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
+        $exp = 'SELECT * FROM users WHERE name LIKE "a%"';
+        $act = $this->object->select()->from('users')->like('name', 'a%')->getSql();
+     
+        $this->assertEquals($exp, $act);
+    }
+
+    public function testLikeWithoutFields() {
+        $exp = 'SELECT * FROM users WHERE name LIKE "a%"';
+        $act = $this->object->select()->from('users')->where('name')->like('a%')->getSql();
+     
+        $this->assertEquals($exp, $act);
     }
 
 
