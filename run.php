@@ -29,7 +29,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 
 //				$arr = $db->update('nazwiska2')->set('name', '"Daniel"')->like('name', '"da%"')->exec();
 //				$arr = $db->select('*')->from('nazwiska2')->in('id', '1,2')->exec();
-				$arr = $db->insert($val)->into('my')->exec();
+				$arr = $db->insert($val)->into('my')->getSql();
 				print_r($arr);
 				printf('Dodano %d rekordów.', $arr);
 				

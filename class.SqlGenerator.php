@@ -545,20 +545,32 @@
 			$this->sql .= 'VALUES ';
 			
 			$len = count($this->sqlInsertValues);
-			
-			if( $len === 1) {
-				$this->sql .='(' . join(', ', array_values($this->sqlInsertValues[0])) . ')';
-			} else {
-				for( $i = 0; $i < $len; $i++) {
-					$values[] = '(' . join(', ', array_values($this->sqlInsertValues[$i])) . ')';
-				}
-
-				$this->sql .= join(', ', $values);
-			}
+            for( $i = 0; $i < $len; $i++) {
+                $value = array_map(array($this, 'addQuotes'), array_values($this->sqlInsertValues[$i]));
+                $values[] = '(' . join(', ', $value) . ')';
+            }
+            
+            $this->sql .= join(', ', $values);
 		}
 		
-		
-		/**
+        
+        /**
+         * Add quotes around string in INSERTs
+         */
+        protected function addQuotes($el) {
+            if( is_array($el)) {
+                array_map(array($this, 'addQoutes'), $el);
+            }
+            if( is_string($el)) {
+                $el = '"' . $el . '"';
+            }
+            print_r($el, '\n');
+            return $el;
+        }
+
+
+
+        /**
 		 * Build ALTER TABLE query.
 		 * 
 		 * @see setConditions()
