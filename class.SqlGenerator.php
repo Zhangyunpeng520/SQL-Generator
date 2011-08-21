@@ -3,9 +3,9 @@
 /**
  * class.SqlGenerator.php
  * 
- * @link http://MYnetDESK.pl
- * @author gcdreak
- * @version 0.1
+ * @link https://github.com/gcdreak
+ * @author Daniel 'gcdreak' Martuszewski
+ * @version 1.0
  */
 
 /**
