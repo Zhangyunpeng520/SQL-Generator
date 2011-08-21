@@ -118,17 +118,6 @@ class SqlGeneratorTest extends PHPUnit_Framework_TestCase {
     }
 
 
-    /**
-     * @todo Implement testAlterTable().
-     */
-    public function testAlterTable() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-                'This test has not been implemented yet.'
-        );
-    }
-
-
     public function testTable() {
         $exp = 'SELECT * FROM users';
         $act = $this->object->select('*')->table('users')->getSql();

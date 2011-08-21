@@ -200,22 +200,6 @@ class SqlGenerator {
 
 
     /**
-     * Set queery type as ALTER TABLE and set table using in query if $table is given.
-     * 
-     * @see setTable()
-     * @param string $table String with table name. 
-     * @return object SqlGenerator
-     */
-    public function alterTable($table = null) {
-        $this->setTable($table);
-
-        $this->sqlAction = 'ALTER TABLE';
-
-        return $this;
-    }
-
-
-    /**
      * Set or add table using in query.
      * 
      * @param string $strTable Table name.
@@ -345,9 +329,9 @@ class SqlGenerator {
             $values = $field;
             $field = $this->sqlTmpField;
         }
-        
+
         $values = $this->addQuotes($values);
-        
+
         if( is_array($values) ) {
             $condition = sprintf('IN (%s)', join(', ', $values));
         } else {
@@ -475,13 +459,12 @@ class SqlGenerator {
      * @see buildUpdateSql()
      * @see buildInsertSql()
      * @see buildDeleteSql()
-     * @see buildAlterTableSql()
      */
     protected function buildSql() {
         if( !$this->sql ) {
             $this->sql = $this->sqlAction;
 
-            if( count($this->sqlFields) === 0) {
+            if( count($this->sqlFields) === 0 ) {
                 $this->sqlFields[] = '*';
             }
             $this->sqlStrTables = join(', ', $this->sqlTables);
@@ -496,8 +479,6 @@ class SqlGenerator {
                 case 'INSERT': $this->buildInsertSql();
                     break;
                 case 'DELETE': $this->buildDeleteSql();
-                    break;
-                case 'ALTER TABLE': $this->buildAlterTableSql();
                     break;
             }
         }
@@ -536,9 +517,9 @@ class SqlGenerator {
         foreach( $this->sqlSetValues as $field => $val ) {
             $this->sql .= ' ' . $field . ' = ' . $val . ',';
         }
-        
+
         $this->sql = substr($this->sql, 0, -1);
-        
+
 
         $this->setConditions();
         $this->setLimit();
