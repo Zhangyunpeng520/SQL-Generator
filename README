@@ -1,2 +1,3 @@
+SQL-Generator by gcdreak
 PHP class to create SQL queries using a jQuery way 
-e.x. $sql->select('field', 'fiel2')->from('table');
+e.x. $sql->select(array('field', 'fiel2'))->from('table');
