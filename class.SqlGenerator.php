@@ -88,9 +88,6 @@ class SqlGenerator {
      * @return object SqlGenerator
      */
     public function select($fields = null) {
-        if( $fields === null) {
-            $fields = '*';
-        }
         $this->setFields($fields);
 
         $this->sqlAction = 'SELECT';
@@ -247,31 +244,31 @@ class SqlGenerator {
     /**
      * Using to set conditions using in query.
      *  
-     * @param string $field Name of fields or all condition with field name.
-     * @param string $condition Condition of $field.
+     * @param string $fieldCondition Name of fields with condition or all condition with field name ex: "id >".
+     * @param string $value Value of $fieldCondition.
      * @param string $joiner Word using to join condition with others. AND or OR.
      * @param boolean $quotes Determinates if add qoutes around strings.
      * @return object SqlGenerator
      */
-    public function where($field, $condition = null, $joiner = 'AND', $quotes = true) {
+    public function where($fieldCondition, $value = null, $joiner = 'AND', $quotes = true) {
 
-        if( $condition === null ) {
-            $this->sqlTmpField = $field;
+        if( $value === null ) {
+            $this->sqlTmpField = $fieldCondition;
         } else {
             $joiner = strtoupper($joiner);
 
-            if( $condition === false ) {
-                $condition = $field;
-                $field = ' ';
+            if( $value === false ) {
+                $value = $fieldCondition;
+                $fieldCondition = ' ';
             }
 
             if( $quotes ) {
-                $condition = $this->addQuotes($condition);
+                $value = $this->addQuotes($value);
             }
             if( count($this->sqlConditions) ) {
-                $this->sqlConditions[] = sprintf('%s %s %s', $joiner, $field, $condition);
+                $this->sqlConditions[] = sprintf('%s %s %s', $joiner, $fieldCondition, $value);
             } else {
-                $this->sqlConditions[] = sprintf('%s %s', $field, $condition);
+                $this->sqlConditions[] = sprintf('%s %s', $fieldCondition, $value);
             }
         }
 
@@ -283,12 +280,12 @@ class SqlGenerator {
      * Add extra condition with AND.
      *
      * @see where()
-     * @param string $field Name of field.
-     * @param string $condition Condition to field $field.
+     * @param string $fieldCondition Name of field.
+     * @param string $value Value of $fieldCondition.
      * @return object SqlGenerator
      */
-    public function andSql($field, $condition) {
-        $this->where($field, $condition);
+    public function andSql($fieldCondition, $value) {
+        $this->where($fieldCondition, $value);
 
         return $this;
     }
@@ -298,12 +295,12 @@ class SqlGenerator {
      * Add extra condition with OR.
      *
      * @see where()
-     * @param string $field Name of field.
-     * @param string $condition Condition to field $field.
+     * @param string $fieldCondition Name of field.
+     * @param string $value Value of $fieldCondition.
      * @return object SqlGenerator
      */
-    public function orSql($field, $condition) {
-        $this->where($field, $condition, 'OR');
+    public function orSql($fieldCondition, $value) {
+        $this->where($fieldCondition, $value, 'OR');
 
         return $this;
     }
@@ -313,22 +310,22 @@ class SqlGenerator {
      * Set LIKE condition in query.
      * 
      * @see where()
-     * @param string $field Name of field or condition.
-     * @param string $condition Condition to field $field.
+     * @param string $fieldCondition Name of field or condition.
+     * @param string $value Value of $fieldCondition.
      * @param string $joiner Word using to join condition with others. AND or OR.
      * @return object SqlGenerator
      */
-    public function like($field, $condition = null, $joiner = 'AND') {
+    public function like($fieldCondition, $value = null, $joiner = 'AND') {
 
-        if( $condition === null ) {
-            $condition = $field;
-            $field = $this->sqlTmpField;
+        if( $value === null ) {
+            $value = $fieldCondition;
+            $fieldCondition = $this->sqlTmpField;
         }
 
-        $condition = $this->addQuotes($condition);
-        $condition = sprintf('LIKE %s', $condition);
+        $value = $this->addQuotes($value);
+        $value = sprintf('LIKE %s', $value);
 
-        $this->where($field, $condition, $joiner, false);
+        $this->where($fieldCondition, $value, $joiner, false);
 
         return $this;
     }
@@ -348,7 +345,9 @@ class SqlGenerator {
             $values = $field;
             $field = $this->sqlTmpField;
         }
-
+        
+        $values = $this->addQuotes($values);
+        
         if( is_array($values) ) {
             $condition = sprintf('IN (%s)', join(', ', $values));
         } else {
@@ -482,6 +481,9 @@ class SqlGenerator {
         if( !$this->sql ) {
             $this->sql = $this->sqlAction;
 
+            if( count($this->sqlFields) === 0) {
+                $this->sqlFields[] = '*';
+            }
             $this->sqlStrTables = join(', ', $this->sqlTables);
             $this->sqlStrFields = join(', ', $this->sqlFields);
             $this->sqlStrConditions = join(' ', $this->sqlConditions);
@@ -568,7 +570,7 @@ class SqlGenerator {
      */
     protected function addQuotes($el) {
         if( is_array($el) ) {
-            array_map(array($this, 'addQoutes'), $el);
+            $el = array_map(array($this, __FUNCTION__), $el);
         }
         if( is_string($el) ) {
             $el = '"' . $el . '"';
