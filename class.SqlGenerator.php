@@ -611,9 +611,12 @@ class SqlGenerator {
      * @see groupBy()
      */
     protected function setGroupBy() {
+        var_dump($this->sql);
         if( $this->sqlGroupBy ) {
+        var_dump($this->sql);   
             $this->sql .= ' GROUP BY ' . $this->sqlGroupBy;
         }
+        var_dump($this->sql);   
     }
 
 
@@ -658,6 +661,8 @@ class SqlGenerator {
      */
     public function groupBy($groupBy) {
         $this->sqlGroupBy = $groupBy;
+        
+        return $this;
     }
 
 
