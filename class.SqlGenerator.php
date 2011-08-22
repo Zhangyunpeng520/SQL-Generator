@@ -78,6 +78,11 @@ class SqlGenerator {
      * @var string
      */
     private $sqlStrConditions;
+    /**
+     * String with with group by tables.
+     * @var string
+     */
+    private $sqlGroupBy;
 
 
     /**
@@ -522,6 +527,7 @@ class SqlGenerator {
 
 
         $this->setConditions();
+        $this->setGroupBy();
         $this->setLimit();
     }
 
@@ -600,6 +606,18 @@ class SqlGenerator {
 
 
     /**
+     * Add SQL GROUP BY to complete query.
+     * 
+     * @see groupBy()
+     */
+    protected function setGroupBy() {
+        if( $this->sqlGroupBy ) {
+            $this->sql .= ' GROUP BY ' . $this->sqlGroupBy;
+        }
+    }
+
+
+    /**
      * Clear data used to generated query. It's important to built next query.
      *  
      * @param bool $clearStrValues Clear all object variables?
@@ -630,6 +648,16 @@ class SqlGenerator {
      */
     public function getSqlAction() {
         return $this->sqlAction;
+    }
+
+
+    /**
+     * Set group by condition in query
+     * 
+     * @param string $groupBy String with group by phrase.
+     */
+    public function groupBy($groupBy) {
+        $this->sqlGroupBy = $groupBy;
     }
 
 
