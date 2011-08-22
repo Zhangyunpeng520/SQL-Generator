@@ -40,7 +40,7 @@ class SqlGenerator {
     private $sqlTmpField;
     /**
      * Variable using to store ORDER BY clauses.
-     * @var unknown_type
+     * @var string
      */
     private $order;
     /**
@@ -83,6 +83,11 @@ class SqlGenerator {
      * @var string
      */
     private $sqlGroupBy;
+    /**
+     * Determinate if DISTINCT should be added to query.
+     * @var boolean
+     */
+    private $sqlDistinct;
 
 
     /**
@@ -90,11 +95,12 @@ class SqlGenerator {
      * 
      * @see setFields()
      * @param mixed	$fields	Array or string with fields using in query. If nothing '*' will be used
+     * @param boolean Determinate if add DISTINCT
      * @return object SqlGenerator
      */
-    public function select($fields = null) {
+    public function select($fields = null, $distinct = null) {
         $this->setFields($fields);
-
+        $distinct && $this->distinct();
         $this->sqlAction = 'SELECT';
 
         return $this;
@@ -384,6 +390,23 @@ class SqlGenerator {
 
 
     /**
+     * Add DISTINCT statement
+     * 
+     */
+    public function setDistinct() {
+        if( $this->sqlDistinct ) {
+            $this->sql .= ' DISTINCT';
+        }
+    }
+
+    
+    public function distinct() {
+        $this->sqlDistinct = true;
+        
+        return $this;
+    }
+
+    /**
      * Set full user's query.
      * 
      * @param string $sql SQL query to database.
@@ -497,6 +520,8 @@ class SqlGenerator {
      * @see setLimit()
      */
     protected function buildSelectSql() {
+        $this->setDistinct();
+        
         $this->sql .= ' ' . $this->sqlStrFields;
         $this->sql .= ' FROM ' . $this->sqlStrTables;
 
@@ -613,10 +638,10 @@ class SqlGenerator {
     protected function setGroup() {
         var_dump($this->sql);
         if( $this->sqlGroupBy ) {
-        var_dump($this->sql);   
+            var_dump($this->sql);
             $this->sql .= ' GROUP BY ' . $this->sqlGroupBy;
         }
-        var_dump($this->sql);   
+        var_dump($this->sql);
     }
 
 
@@ -661,9 +686,11 @@ class SqlGenerator {
      */
     public function group($groupBy) {
         $this->sqlGroupBy = $groupBy;
-        
+
         return $this;
     }
+    
+    
 
 
     /**

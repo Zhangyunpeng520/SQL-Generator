@@ -47,7 +47,7 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																																																																																																																																																																																																																																								<div class="method-definition">
+																																																																																																																																																																																																																																																																																																								<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">void</span>
 										<a href="#addQuotes" title="details" class="method-name">addQuotes</a>
@@ -100,6 +100,12 @@
 											<span class="method-result"><a href="../SQL-Generator/SqlGenerator.html">object SqlGenerator</a></span>
 										<a href="#delete" title="details" class="method-name">delete</a>
 											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$tables</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#distinct" title="details" class="method-name">distinct</a>
+										()
 									</div>
 																<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
@@ -171,7 +177,7 @@
 					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result"><a href="../SQL-Generator/SqlGenerator.html">object SqlGenerator</a></span>
 										<a href="#select" title="details" class="method-name">select</a>
-											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$fields</span> = <span class="var-default">null</span>])
+											([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$fields</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$distinct</span> = <span class="var-default">null</span>])
 									</div>
 																<div class="method-definition">
 					<img src="../media/images/Method.png" alt=" "/>
@@ -183,6 +189,12 @@
 					<img src="../media/images/Method.png" alt=" "/>
 											<span class="method-result">void</span>
 										<a href="#setConditions" title="details" class="method-name">setConditions</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#setDistinct" title="details" class="method-name">setDistinct</a>
 										()
 									</div>
 																<div class="method-definition">
@@ -265,7 +277,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">addQuotes</span> (line <span class="line-number">558</span>)
+		<span class="method-title">addQuotes</span> (line <span class="line-number">583</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -295,7 +307,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">andSql</span> (line <span class="line-number">276</span>)
+		<span class="method-title">andSql</span> (line <span class="line-number">282</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -329,7 +341,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">buildDeleteSql</span> (line <span class="line-number">576</span>)
+		<span class="method-title">buildDeleteSql</span> (line <span class="line-number">601</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -356,7 +368,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">buildInsertSql</span> (line <span class="line-number">539</span>)
+		<span class="method-title">buildInsertSql</span> (line <span class="line-number">564</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -381,7 +393,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">buildSelectSql</span> (line <span class="line-number">499</span>)
+		<span class="method-title">buildSelectSql</span> (line <span class="line-number">522</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -408,7 +420,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">buildSql</span> (line <span class="line-number">468</span>)
+		<span class="method-title">buildSql</span> (line <span class="line-number">491</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -438,7 +450,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">buildUpdateSql</span> (line <span class="line-number">515</span>)
+		<span class="method-title">buildUpdateSql</span> (line <span class="line-number">540</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -465,7 +477,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">clearLastStatementData</span> (line <span class="line-number">628</span>)
+		<span class="method-title">clearLastStatementData</span> (line <span class="line-number">653</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -495,7 +507,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">delete</span> (line <span class="line-number">185</span>)
+		<span class="method-title">delete</span> (line <span class="line-number">191</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -521,12 +533,36 @@
 		
 			
 	</div>
-<a name="methodfrom" id="from"><!-- --></a>
+<a name="methoddistinct" id="distinct"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">from</span> (line <span class="line-number">430</span>)
+		<span class="method-title">distinct</span> (line <span class="line-number">403</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			distinct
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodfrom" id="from"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">from</span> (line <span class="line-number">453</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -553,11 +589,11 @@
 			
 	</div>
 <a name="methodgetSql" id="getSql"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getSql</span> (line <span class="line-number">445</span>)
+		<span class="method-title">getSql</span> (line <span class="line-number">468</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -586,11 +622,11 @@
 			
 	</div>
 <a name="methodgetSqlAction" id="getSqlAction"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">getSqlAction</span> (line <span class="line-number">652</span>)
+		<span class="method-title">getSqlAction</span> (line <span class="line-number">677</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -612,11 +648,11 @@
 			
 	</div>
 <a name="methodgroup" id="group"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">group</span> (line <span class="line-number">662</span>)
+		<span class="method-title">group</span> (line <span class="line-number">687</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -642,11 +678,11 @@
 			
 	</div>
 <a name="methodin" id="in"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">in</span> (line <span class="line-number">331</span>)
+		<span class="method-title">in</span> (line <span class="line-number">337</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -678,11 +714,11 @@
 			
 	</div>
 <a name="methodinsert" id="insert"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">insert</span> (line <span class="line-number">110</span>)
+		<span class="method-title">insert</span> (line <span class="line-number">116</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -708,11 +744,11 @@
 			
 	</div>
 <a name="methodinto" id="into"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">into</span> (line <span class="line-number">140</span>)
+		<span class="method-title">into</span> (line <span class="line-number">146</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -738,11 +774,11 @@
 			
 	</div>
 <a name="methodlike" id="like"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">like</span> (line <span class="line-number">307</span>)
+		<span class="method-title">like</span> (line <span class="line-number">313</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -775,11 +811,11 @@
 			
 	</div>
 <a name="methodlimit" id="limit"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">limit</span> (line <span class="line-number">200</span>)
+		<span class="method-title">limit</span> (line <span class="line-number">206</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -805,11 +841,11 @@
 			
 	</div>
 <a name="methodorSql" id="orSql"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">orSql</span> (line <span class="line-number">291</span>)
+		<span class="method-title">orSql</span> (line <span class="line-number">297</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -839,11 +875,11 @@
 			
 	</div>
 <a name="methodreset" id="reset"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">reset</span> (line <span class="line-number">418</span>)
+		<span class="method-title">reset</span> (line <span class="line-number">441</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -870,11 +906,11 @@
 			
 	</div>
 <a name="methodselect" id="select"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">select</span> (line <span class="line-number">95</span>)
+		<span class="method-title">select</span> (line <span class="line-number">101</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -889,23 +925,26 @@
 		<span class="method-name">
 			select
 		</span>
-					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$fields</span> = <span class="var-default">null</span>])
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$fields</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$distinct</span> = <span class="var-default">null</span>])
 			</div>
 	
 			<ul class="parameters">
 					<li>
 				<span class="var-type">mixed</span>
 				<span class="var-name">$fields</span><span class="var-description">: Array or string with fields using in query. If nothing '*' will be used</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$distinct</span><span class="var-description">: Determinate if add DISTINCT</span>			</li>
 				</ul>
 		
 			
 	</div>
 <a name="methodset" id="set"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">set</span> (line <span class="line-number">170</span>)
+		<span class="method-title">set</span> (line <span class="line-number">176</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -934,11 +973,11 @@
 			
 	</div>
 <a name="methodsetConditions" id="setConditions"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setConditions</span> (line <span class="line-number">589</span>)
+		<span class="method-title">setConditions</span> (line <span class="line-number">614</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -959,12 +998,37 @@
 		
 			
 	</div>
+<a name="methodsetDistinct" id="setDistinct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setDistinct</span> (line <span class="line-number">396</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Add DISTINCT statement</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setDistinct
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
 <a name="methodsetFields" id="setFields"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setFields</span> (line <span class="line-number">375</span>)
+		<span class="method-title">setFields</span> (line <span class="line-number">381</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -994,7 +1058,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setGroup</span> (line <span class="line-number">613</span>)
+		<span class="method-title">setGroup</span> (line <span class="line-number">638</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1020,7 +1084,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setLimit</span> (line <span class="line-number">601</span>)
+		<span class="method-title">setLimit</span> (line <span class="line-number">626</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1046,7 +1110,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setSql</span> (line <span class="line-number">392</span>)
+		<span class="method-title">setSql</span> (line <span class="line-number">415</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1076,7 +1140,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">setTables</span> (line <span class="line-number">358</span>)
+		<span class="method-title">setTables</span> (line <span class="line-number">364</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1106,7 +1170,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">table</span> (line <span class="line-number">213</span>)
+		<span class="method-title">table</span> (line <span class="line-number">219</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1136,7 +1200,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">tables</span> (line <span class="line-number">226</span>)
+		<span class="method-title">tables</span> (line <span class="line-number">232</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1166,7 +1230,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">update</span> (line <span class="line-number">154</span>)
+		<span class="method-title">update</span> (line <span class="line-number">160</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1197,7 +1261,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">where</span> (line <span class="line-number">242</span>)
+		<span class="method-title">where</span> (line <span class="line-number">248</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1236,7 +1300,7 @@
 	
 	<div class="method-header">
 		<img src="../media/images/Method.png" />
-		<span class="method-title">__toString</span> (line <span class="line-number">674</span>)
+		<span class="method-title">__toString</span> (line <span class="line-number">701</span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1263,7 +1327,7 @@
 
 	
 	<p class="notes" id="credit">
-		Documentation generated on Tue, 23 Aug 2011 00:30:52 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Tue, 23 Aug 2011 00:59:11 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

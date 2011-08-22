@@ -277,6 +277,20 @@ class SqlGeneratorTest extends PHPUnit_Framework_TestCase {
      
         $this->assertEquals($exp, $act);
     }
+    
+    public function testDistinct() {
+        $exp = 'SELECT DISTINCT name FROM users';
+        $act = $this->object->select('name')->distinct()->from('users')->getSql();
+     
+        $this->assertEquals($exp, $act);
+    }
+    
+    public function testDistinctAsSelectParameter() {
+        $exp = 'SELECT DISTINCT name FROM users';
+        $act = $this->object->select('name', true)->from('users')->getSql();
+     
+        $this->assertEquals($exp, $act);
+    }
 
 
     /**
