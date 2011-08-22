@@ -271,9 +271,9 @@ class SqlGeneratorTest extends PHPUnit_Framework_TestCase {
     }
 
 
-    public function testGroupBy() {
+    public function testGroup() {
         $exp = 'SELECT * FROM users GROUP BY city';
-        $act = $this->object->select()->from('users')->groupBy($groupBy);
+        $act = $this->object->select()->from('users')->group('city')->getSql();
      
         $this->assertEquals($exp, $act);
     }

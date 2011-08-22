@@ -501,6 +501,7 @@ class SqlGenerator {
         $this->sql .= ' FROM ' . $this->sqlStrTables;
 
         $this->setConditions();
+        $this->setGroup();
         $this->setLimit();
     }
 
@@ -527,7 +528,6 @@ class SqlGenerator {
 
 
         $this->setConditions();
-        $this->setGroupBy();
         $this->setLimit();
     }
 
@@ -608,9 +608,9 @@ class SqlGenerator {
     /**
      * Add SQL GROUP BY to complete query.
      * 
-     * @see groupBy()
+     * @see group()
      */
-    protected function setGroupBy() {
+    protected function setGroup() {
         var_dump($this->sql);
         if( $this->sqlGroupBy ) {
         var_dump($this->sql);   
@@ -659,7 +659,7 @@ class SqlGenerator {
      * 
      * @param string $groupBy String with group by phrase.
      */
-    public function groupBy($groupBy) {
+    public function group($groupBy) {
         $this->sqlGroupBy = $groupBy;
         
         return $this;
