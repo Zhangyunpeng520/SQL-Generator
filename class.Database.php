@@ -24,6 +24,8 @@
 				case 'DELETE': $result = $this->PDOExec(); break;
 			}
 			
+            $this->clearLastStatementData(true);
+            
 			return $result;
 		}
 		
