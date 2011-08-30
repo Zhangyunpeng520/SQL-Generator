@@ -291,6 +291,20 @@ class SqlGeneratorTest extends PHPUnit_Framework_TestCase {
      
         $this->assertEquals($exp, $act);
     }
+    
+    public function testOrder() {
+        $exp = 'SELECT name, lastname FROM users ORDER BY lastname';
+        $act = $this->object->select(array('name', 'lastname'))->from('users')->order('lastname')->getSql();
+     
+        $this->assertEquals($exp, $act);
+    }
+    
+    public function testOrderASC() {
+        $exp = 'SELECT name, lastname FROM users ORDER BY lastname ASC';
+        $act = $this->object->select(array('name', 'lastname'))->from('users')->order('lastname ASC')->getSql();
+     
+        $this->assertEquals($exp, $act);
+    }
 
 
     /**

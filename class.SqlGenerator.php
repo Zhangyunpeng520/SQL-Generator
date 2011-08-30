@@ -42,7 +42,7 @@ class SqlGenerator {
      * Variable using to store ORDER BY clauses.
      * @var string
      */
-    private $order;
+    private $sqlOrderBy;
     /**
      * SQL conditions.
      * @var array
@@ -422,11 +422,11 @@ class SqlGenerator {
     /**
      * Set ORDER BY clouse
      *  
-     * @param string $orderBy String representing ORDER BY clause.
+     * @param string $sqlOrderBy String representing ORDER BY clause.
      * @return object SqlGenerator
      */
-    private function order($orderBy) {
-        $this->order = $orderBy;
+    public function order($orderBy) {
+        $this->sqlOrderBy = $orderBy;
 
         return $this;
     }
@@ -527,6 +527,7 @@ class SqlGenerator {
 
         $this->setConditions();
         $this->setGroup();
+        $this->setOrder();
         $this->setLimit();
     }
 
@@ -626,6 +627,18 @@ class SqlGenerator {
     protected function setLimit() {
         if( $this->sqlLimit ) {
             $this->sql .= ' LIMIT ' . $this->sqlLimit;
+        }
+    }
+
+
+    /**
+     * Add SQL ORDER BY to complete query.
+     * 
+     * @see order()
+     */
+    protected function setOrder() {
+        if( $this->sqlOrderBy ) {
+            $this->sql .= ' ORDER BY ' . $this->sqlOrderBy;
         }
     }
 
