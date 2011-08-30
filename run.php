@@ -22,11 +22,12 @@
 			
 			try {
 
-				$arr = $db->select('*')->from('my')->where('id')->in(array(2, 4))->exec();
-//				$arr = $db->insert($val)->into('my')->getSql();
-				print_r($arr);
-				$arr = $db->select('*')->from('my')->where('id')->in(array(2, 6))->exec();
-				print_r($arr);
+//				$arr = $db->select('*')->from('my')->where('id')->in(array(2, 4))->exec();
+				$arr = $db->insert($val)->into('my')->exec();
+//				print_r($arr);
+//				$arr = $db->select('*')->from('my')->where('id')->in(array(2, 6))->exec();
+                var_dump($db->getLastInsertId());
+//				print_r($arr);
 //				printf('Dodano %d rekordów.', $arr);
 				
 			} catch(Exception $e) {
